@@ -48,25 +48,25 @@ ntfs-3g (usually pre-installed)
 
 zenity for GUI (auto-installs if missing)
 
-🚀 How to Use
+## 🚀 How to Use
 Clone the repo:
 
-bash
-Copy
-Edit
-git clone https://github.com/ryyReid/steam-ntfs-drive-fixer.git
-cd steam-ntfs-drive-fixer
-Make the script executable:
+ bash
+ Copy  
+                              Edit
+ ##git clone https://github.com/ryyReid/steam-ntfs-drive-fixer.git
+ cd steam-ntfs-drive-fixer
+ Make the script executable:
 
-bash
-Copy
-Edit
-chmod +x steam_drive_setup.sh
-Run the setup:
+    bash
+         Copy
+            Edit
+## chmod +x steam_drive_setup.sh
+ Run the setup:
 
-bash
-Copy
-Edit
+  bash
+       Copy
+            Edit
 ./steam_drive_setup.sh
 Follow the GUI prompts:
 
