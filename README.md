@@ -1,8 +1,5 @@
 
-markdown
-Copy
-Edit
-# 🧩 Reid's Steam NTFS Linux Drive Fixer
+# 🧩 Reid's Steam NTFS Linux Drive Fixer (for external drives or m.2 ssd)
 
 Automatically mount and fix your **NTFS Steam game drive** on Linux so **Proton and Steam games Just Work™**.
 
