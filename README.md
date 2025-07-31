@@ -1,93 +1,110 @@
 
-🧩 Reid's Steam NTFS Linux Drive Fixer
-Automatically mount and fix your NTFS Steam game drive on Linux so Proton and Steam games Just Work™.
-
-This tool remembers your game drive, fixes fstab with correct options (exec, uid, etc.), and ensures it's mounted properly on every boot. No more disk write errors, .exe not executable, or Proton refusing to run games from your Windows drive!
-
-🧠 Designed and maintained by @ryyReid
-
-✅ What It Fixes
-Steam can't run .exe games from NTFS
-
-Proton or Wine can't start games
-
-NTFS mounts with noexec (prevents launching anything)
-
-Steam fails to write to drive (disk write error)
-
-NTFS drives not mounting on boot
-
-📂 What It Does
-Lets you pick your NTFS Steam drive (GUI)
-
-Detects the drive's UUID and mount point
-
-Automatically fixes /etc/fstab with:
-
-bash
+markdown
 Copy
 Edit
-uid=$USER,gid=$GROUP,exec,auto,nofail
-Mounts the drive immediately
+# 🧩 Reid's Steam NTFS Linux Drive Fixer
 
-Adds autostart script to ensure it mounts on every login
+Automatically mount and fix your **NTFS Steam game drive** on Linux so **Proton and Steam games Just Work™**.
 
-Optionally launches Steam for you
+This script remembers your game drive, updates `/etc/fstab` with the correct mount options, and ensures it's auto-mounted on every boot.  
+✅ No more `.exe not executable`, `disk write errors`, or Proton refusing to launch games!
+
+> 🧠 Made with 🛠️ by [@ryyReid](https://github.com/ryyReid)
+
+---
+
+## ✅ What It Fixes
+
+- Steam can’t run `.exe` games from NTFS drives
+- Proton/Wine games failing to start
+- NTFS mounting with `noexec` (blocks game launches)
+- Steam "disk write error" when installing games
+- NTFS drives not mounting on boot
+
+---
+
+## 📂 What It Does
+
+- ✅ GUI lets you select your NTFS game drive
+- ✅ Detects UUID and mount path
+- ✅ Automatically adds a working `/etc/fstab` entry:
+  
+  ```fstab
+  UUID=XXXX-XXXX  /your/mount/path  ntfs-3g  uid=1000,gid=1000,exec,auto,nofail  0  0
+✅ Mounts the drive immediately
+
+✅ Installs a copy of the script to ~/.local/bin
+
+✅ Creates autostart .desktop entry
+
+✅ Optionally launches Steam when done
 
 🧰 Requirements
 Linux (Mint, Ubuntu, Pop!_OS, etc.)
 
 Steam installed
 
-NTFS-3G installed (usually already is)
+ntfs-3g (usually pre-installed)
 
-Zenity (GUI prompt, auto-installs if missing)
+zenity for GUI (auto-installs if missing)
 
 🚀 How to Use
+Clone the repo:
+
+bash
+Copy
+Edit
+git clone https://github.com/ryyReid/steam-ntfs-drive-fixer.git
+cd steam-ntfs-drive-fixer
+Make the script executable:
+
 bash
 Copy
 Edit
 chmod +x steam_drive_setup.sh
+Run the setup:
+
+bash
+Copy
+Edit
 ./steam_drive_setup.sh
-This will:
+Follow the GUI prompts:
 
-Ask you to select the NTFS drive you use for Steam games
+Pick your NTFS Steam drive
 
-Add a correct entry to /etc/fstab
+Confirm mount path and UUID
 
-Mount it right away
-
-Install a copy of the script in ~/.local/bin
-
-Add it to your autostart folder
-
-Ask if you want to launch Steam right now
+Script updates fstab, mounts the drive, and sets up autostart
 
 🔁 Auto-Mount Every Boot
-✅ Yes, it auto-runs on login by creating this:
+Yes — it creates this autostart file:
 
 bash
 Copy
 Edit
 ~/.config/autostart/steam_drive_mounter.desktop
-It uses the permanent script location:
+Which runs this every login:
 
 bash
 Copy
 Edit
 ~/.local/bin/steam_drive_mounter.sh
-💻 Example fstab Entry Added
+💻 Example /etc/fstab Entry Added
 fstab
 Copy
 Edit
 UUID=XXXX-XXXX  /media/reid/SteamDrive  ntfs-3g  uid=1000,gid=1000,exec,auto,nofail  0  0
 🛑 Notes
-This does not erase or reformat your drive
+❌ Does not erase or reformat your drive
 
-You can re-run the script anytime to reselect or update the mount
+🔁 You can re-run the script anytime to reconfigure
 
-Works with any NTFS game drive used by Steam or Heroic
+✅ Works with any NTFS game drive, including for Heroic and Lutris
 
 📄 License
 MIT License
 © 2025 @ryyReid
+
+---
+
+Let me know if you want a  `.deb` later!
