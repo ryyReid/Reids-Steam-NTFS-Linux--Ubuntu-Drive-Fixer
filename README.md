@@ -48,17 +48,17 @@ zenity for GUI (auto-installs if missing)
 ## 🚀 How to Use
 Clone the repo:
 
- bash
- Copy  
-                              Edit
- ##git clone https://github.com/ryyReid/steam-ntfs-drive-fixer.git
+               
+                         
+                              
+                                  git clone https://github.com/ryyReid/steam-ntfs-drive-fixer.git
  cd steam-ntfs-drive-fixer
  Make the script executable:
 
-    bash
-         Copy
-            Edit
-## chmod +x steam_drive_setup.sh
+    
+         
+          
+                chmod +x steam_drive_setup.sh
  Run the setup:
 
   bash
