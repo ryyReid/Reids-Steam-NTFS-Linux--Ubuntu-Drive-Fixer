@@ -1,4 +1,4 @@
-# 🔧 Steam NTFS Mount Fixer (GUI Tool)
+# 🔧 Steam--m2--drive--tool (GUI Tool)
 
 Fix your Steam/NTFS issues with a simple graphical tool for Linux!
 
