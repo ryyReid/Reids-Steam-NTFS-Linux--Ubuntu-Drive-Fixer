@@ -1,57 +1,93 @@
-# 🔧 Steam--m2--drive--tool (GUI Tool)
 
-Fix your Steam/NTFS issues with a simple graphical tool for Linux!
+🧩 Reid's Steam NTFS Linux Drive Fixer
+Automatically mount and fix your NTFS Steam game drive on Linux so Proton and Steam games Just Work™.
 
-This script helps you mount an NTFS drive (like a Windows M.2 with your Steam library) with the right permissions so Steam on Linux can launch your games properly—perfect for dual-boot setups.
+This tool remembers your game drive, fixes fstab with correct options (exec, uid, etc.), and ensures it's mounted properly on every boot. No more disk write errors, .exe not executable, or Proton refusing to run games from your Windows drive!
 
----
+🧠 Designed and maintained by @ryyReid
 
-## ✅ Features
+✅ What It Fixes
+Steam can't run .exe games from NTFS
 
-- 📂 GUI prompt to select your NTFS drive mount path (via Zenity)
-- 🛠 Automatically updates `/etc/fstab` with proper `exec`, `symlink`, and `allow_other` flags
-- 🔁 Optionally remounts the drive live
-- 🚀 Can auto-launch Steam after fixing
-- 📥 Installs `zenity` if it's not already installed
+Proton or Wine can't start games
 
----
+NTFS mounts with noexec (prevents launching anything)
 
-## 🧠 Why
+Steam fails to write to drive (disk write error)
 
-Steam on Linux often fails to run games on NTFS drives mounted by default with restricted options. This tool makes it simple to fix that without having to edit `/etc/fstab` manually or fight with permissions.
+NTFS drives not mounting on boot
 
----
+📂 What It Does
+Lets you pick your NTFS Steam drive (GUI)
 
-## 📦 Requirements
+Detects the drive's UUID and mount point
 
-- Linux distro (tested on Linux Mint)
-- `zenity` (auto-installed by the script)
-- `ntfs-3g`
-- `sudo` access
-- An NTFS drive shared with Windows (e.g., dual-boot Steam drive)
+Automatically fixes /etc/fstab with:
 
----
+bash
+Copy
+Edit
+uid=$USER,gid=$GROUP,exec,auto,nofail
+Mounts the drive immediately
 
-## 📂 Example Use Case
+Adds autostart script to ensure it mounts on every login
 
-You're dual-booting Windows + Linux. Your Steam games are on an M.2 NTFS drive. On Linux, Steam won’t launch them unless:
-- The mount point allows `exec`
-- Symlinks are respected
-- You mount with `ntfs-3g` using `allow_other`
+Optionally launches Steam for you
 
-This script does all of that automatically.
+🧰 Requirements
+Linux (Mint, Ubuntu, Pop!_OS, etc.)
 
----
+Steam installed
 
-## ▶️ How to Run
+NTFS-3G installed (usually already is)
 
-```bash
-chmod +x steam-ntfs-fixer.sh
-./steam-ntfs-fixer.sh
-🛡 Disclaimer
-Use at your own risk. This script edits /etc/fstab and requires sudo. Always back up critical files.
+Zenity (GUI prompt, auto-installs if missing)
 
-📃 License
-MIT
+🚀 How to Use
+bash
+Copy
+Edit
+chmod +x steam_drive_setup.sh
+./steam_drive_setup.sh
+This will:
 
+Ask you to select the NTFS drive you use for Steam games
+
+Add a correct entry to /etc/fstab
+
+Mount it right away
+
+Install a copy of the script in ~/.local/bin
+
+Add it to your autostart folder
+
+Ask if you want to launch Steam right now
+
+🔁 Auto-Mount Every Boot
+✅ Yes, it auto-runs on login by creating this:
+
+bash
+Copy
+Edit
+~/.config/autostart/steam_drive_mounter.desktop
+It uses the permanent script location:
+
+bash
+Copy
+Edit
+~/.local/bin/steam_drive_mounter.sh
+💻 Example fstab Entry Added
+fstab
+Copy
+Edit
+UUID=XXXX-XXXX  /media/reid/SteamDrive  ntfs-3g  uid=1000,gid=1000,exec,auto,nofail  0  0
+🛑 Notes
+This does not erase or reformat your drive
+
+You can re-run the script anytime to reselect or update the mount
+
+Works with any NTFS game drive used by Steam or Heroic
+
+📄 License
+MIT License
 © 2025 @ryyReid
